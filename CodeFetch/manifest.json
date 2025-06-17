@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Asset Fetcher",
+  "name": "CodeFetch",
   "version": "1.0",
-  "description": "Extract and download all assets from any website",
+  "description": "Extract and download all assets from any website with their HTML and CSS code just by hovering on them",
   "permissions": [
     "activeTab",
     "downloads",
