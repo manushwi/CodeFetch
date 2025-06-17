@@ -1,4 +1,4 @@
-/* .css-inspector-overlay {
+.css-inspector-overlay {
     position: absolute !important;
     pointer-events: none !important;
     border: 2px solid #ff3b3b !important;
@@ -126,4 +126,4 @@
 .css-inspector-close:hover {
     background: #ff3b3b !important;
     color: #fff !important;
-} */
+}

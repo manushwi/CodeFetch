@@ -1,4 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg.type === 'assets') {
+    const ul = document.getElementById('assetList');
+    ul.innerHTML = '';
+    msg.data.forEach(url => {
+      const li = document.createElement('li');
+      li.textContent = url;
+      ul.appendChild(li);
+    });
+  }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    document.getElementById('getCssBtn').addEventListener('click', async () => {
+        try {
+            const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+            
+            await chrome.scripting.executeScript({
+                target: { tabId: tab.id },
+                func: () => {
+                    window.cssInspectorActive = true;
+                    document.dispatchEvent(new CustomEvent('cssInspectorActivate'));
+                }
+            });
+            
+            window.close();
+        } catch (error) {
+            console.error('Error activating CSS inspector:', error);
+        }
+    });
+
+
     const assetsBtn = document.getElementById('assetsBtn');
 
     assetsBtn.addEventListener('click', function() {
