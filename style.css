@@ -11,7 +11,7 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
-<<<<<<< HEAD
+
 .baground {
   background-image: url(3dimg.png);
   width: 100%;
@@ -203,10 +203,6 @@ nav a {
   box-shadow: 0 2px 10px rgba(255, 59, 59, 0.3);
 }
 
-.mid{
-  
-}
-
 .grid {
       padding-top: 100px;
       margin: 8%;
@@ -271,7 +267,7 @@ nav a {
     a:hover {
       text-decoration: underline;
     }
-=======
+
 
 .background {
   width: 100vw;
@@ -933,4 +929,64 @@ a:hover {
   font-size: 0.9rem;
   opacity: 0.7;
 }
->>>>>>> c3485090b836c2523bb5709570c7996da8f42a70
+ .footer {
+  background: linear-gradient(from top, #000000 0%, #7d0303 100%);
+  color: #ffffff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-about,
+.footer-links,
+.footer-contact {
+  flex: 1 1 300px;
+  margin: 20px;
+}
+
+.footer h3, .footer h4 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+  color: #ffffff;
+}
+.social-icons a:hover {
+  color: #ffffff;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 40px;
+  margin-top: 30px;
+  font-size: 1em;
+  color: #aaa;
+}
