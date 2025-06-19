@@ -1,42 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>codefetch</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeFetch</title>
 </head>
-<body>
-<div class="baground">
-  <div class="scan-line"></div>
-  <header>
-    <div class="logo"> <img src="logo.png" alt="codefetch logo" style="width: 50px;">
-        <h1 class="logotext1">Code</h1> <h1 class="logotext2">Fetch</h1></div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Products</a>
-      <a href="#">Contact Us</a>
-      <button class="btn"> <img src="get.png ">Get now</button>
-    </nav>
-  </header>
+<link rel="stylesheet" href="style.css" />
 
-  <section class="main">
-    <div class="left">
-      <h1>CodeFetch</h1>
-      <h3>Best developer tool</h3>
-      <p>
-        Struggling with DevTools? Our Chrome Extension makes web inspection easy and beginner-friendly. 
-        With one click, you can hover over any element on a live site to see its HTML and CSS, extract images, videos, and SVGs, 
-        and copy ready-to-use code snippets. Whether you're a student or a new developer, 
-        this tool helps you understand how real websites are built — visually, interactively, and without the overwhelm. 
-        Start learning by doing, not guessing.
-      </p>
-      <div class="buttons">
-        <button class="btnn">Trial</button>
-        <button class="btn">Premium</button>
+<body>
+  <div class="background" id="main">
+    <video muted loop autoplay>
+      <source src="bg-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div id="cursor"></div>
+    <img src="3dimg3.png" alt="Background decoration">
+
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="CodeFetch logo">
+        <h1 class="logotext1">Code</h1>
+        <h1 class="logotext2">Fetch</h1>
+      </div>
+
+      <nav id="nav">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Contact Us</a>
+        <button class="btn">
+          <img style="padding-right: 10px;" src="get.png" alt="">
+          Get Now
+        </button>
+      </nav>
+
+      <div class="mobile-menu-toggle" id="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <section class="main">
+      <div class="left">
+        <h1>CodeFetch</h1>
+        <h3>Best developer tool</h3>
+        <p>
+          Struggling with DevTools? Our Chrome Extension makes web inspection easy and beginner-friendly.
+          With one click, you can hover over any element on a live site to see its HTML and CSS, extract images, videos,
+          and SVGs,
+          and copy ready-to-use code snippets. Whether you're a student or a new developer,
+          this tool helps you understand how real websites are built — visually, interactively, and without the
+          overwhelm.
+          Start learning by doing, not guessing.
+        </p>
+        <div class="buttons">
+          <button class="btnn">Trial</button>
+          <button class="btn">Premium</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="scroll-container" id="scrollContainer">
+    <div class="animation-wrapper">
+      <div class="header" id="header">
+        <h1>
+
+          <img src="arrow (2).png" alt="">
+        </h1>
+        <h1>Scroll Down</h1>
+        <p>For more information on CodeFetch chrome extension scroll down to learn more </p>
+      </div>
+
+      <div class="card-container" id="cardContainer">
+        <div class="card-inner">
+          <div class="demo-content">
+            <div class="video-container">
+              <iframe id="youtubeVideo" src="https://www.youtube.com/embed/5IlclvUa5_4?enablejsapi=1" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen>
+              </iframe>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-  </section>
   </div>
+
+  <div class="spacer">
+    <h2>Tools for web developers</h2>
+    <div class="cards">
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="icon">
+            <img src="eye.png" alt="Inspector Icon" />
+          </div>
+          <h3>Inspector</h3>
+          <p>Inspect HTML and CSS by just hovering over the element. No need to open dev tools.</p>
+          <a href="#">Learn more →</a>
+        </div>
+        <div class="feature-item">
+          <div class="icon">
+            <img src="photo.png" alt="Assets Icon" />
+          </div>
+          <h3>Assets</h3>
+          <p>Extract images, videos, and SVGs,
+            and copy ready-to-use code snippets from any page.</p>
+          <a href="#">Learn more →</a>
+        </div>
+        <div class="feature-item">
+          <div class="icon">
+            <img src="photo.png" alt="Assets Icon" />
+          </div>
+          <h3>Assets</h3>
+          <p>Extract images, videos, and SVGs,
+            and copy ready-to-use code snippets from any page.</p>
+          <a href="#">Learn more →</a>
+        </div>
+        <div class="feature-item">
+          <div class="icon">
+            <img src="photo.png" alt="Assets Icon" />
+          </div>
+          <h3>Assets</h3>
+          <p>Extract images, videos, and SVGs,
+            and copy ready-to-use code snippets from any page.</p>
+          <a href="#">Learn more →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="page3">
+
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+
+  <script>
+    class ContainerScrollAnimation {
+      constructor() {
+        this.scrollContainer = document.getElementById('scrollContainer');
+        this.cardContainer = document.getElementById('cardContainer');
+        this.header = document.getElementById('header');
+        this.scrollProgress = document.getElementById('scrollProgress');
+
+        this.isMobile = window.innerWidth <= 768;
+
+        this.init();
+      }
+
+      init() {
+        this.setupEventListeners();
+        this.handleScroll();
+      }
+
+      setupEventListeners() {
+        window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('resize', () => {
+          this.isMobile = window.innerWidth <= 768;
+          this.handleScroll();
+        });
+      }
+
+      handleScroll() {
+        const scrollProgress = this.getScrollProgress();
+        this.updateAnimations(scrollProgress);
+        this.updateScrollIndicator(scrollProgress);
+      }
+
+      getScrollProgress() {
+        const containerRect = this.scrollContainer.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerHeight = containerRect.height;
+        const windowHeight = window.innerHeight;
+
+        // Calculate when container enters and exits viewport
+        const startOffset = windowHeight;
+        const endOffset = windowHeight * 0.001;
+
+        const totalDistance = startOffset - endOffset;
+        const currentProgress = (startOffset - containerTop) / totalDistance;
+
+        return Math.max(0, Math.min(1, currentProgress));
+      }
+
+      updateAnimations(progress) {
+        // Rotation: starts at 20deg, ends at 0deg
+        const rotation = 30 - (progress * 30);
+
+        // Scale: mobile (0.7 to 0.9), desktop (1.05 to 1.0)
+        const scaleStart = this.isMobile ? 0.7 : 1.05;
+        const scaleEnd = this.isMobile ? 0.9 : 1.0;
+        const scale = scaleStart + (progress * (scaleEnd - scaleStart));
+
+        // Translation: header moves up as we scroll
+        const headerTranslate = progress * -100;
+
+        // Apply transforms
+        this.cardContainer.style.transform = `rotateX(${rotation}deg) scale(${scale})`;
+        this.header.style.transform = `translateY(${headerTranslate}px)`;
+
+        // Optional: Add some opacity fade to header
+        this.header.style.opacity = Math.max(0.3, 1 - (progress * 0.7));
+      }
+
+      updateScrollIndicator(progress) {
+        const height = Math.max(0, Math.min(100, progress * 100));
+        this.scrollProgress.style.height = `${height}%`;
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new ContainerScrollAnimation();
+    });
+
+    // Add some extra scroll smoothness for webkit browsers
+    document.documentElement.style.scrollBehavior = 'smooth';
+  </script>
 </body>
+
 </html>
