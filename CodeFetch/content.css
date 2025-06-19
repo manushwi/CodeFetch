@@ -1,0 +1,129 @@
+.css-inspector-overlay {
+    position: absolute !important;
+    pointer-events: none !important;
+    border: 2px solid #ff3b3b !important;
+    background: rgba(255, 59, 59, 0.1) !important;
+    z-index: 999999 !important;
+    transition: all 0.1s ease !important;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+.css-inspector-popup {
+    position: fixed !important;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    border: 1px solid #444 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    color: #ffffff !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 12px !important;
+    z-index: 1000000 !important;
+    max-width: 500px !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 3px solid #ff3b3b !important;
+}
+
+.css-inspector-popup::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.css-inspector-popup::-webkit-scrollbar-track {
+    background: #2d2d2d !important;
+    border-radius: 3px !important; 
+}
+
+.css-inspector-popup::-webkit-scrollbar-thumb {
+    background: #666 !important;
+    border-radius: 3px !important;
+}
+
+.css-inspector-popup::-webkit-scrollbar-thumb:hover {
+    background: #888 !important;
+}
+
+.css-inspector-section {
+    margin-bottom: 15px !important;
+}
+
+.css-inspector-title {
+    color: #ff3b3b !important;
+    font-weight: bold !important;
+    margin-bottom: 8px !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.css-inspector-copy-btn {
+    background: #444 !important;
+    border: 1px solid #666 !important;
+    color: #fff !important;
+    padding: 2px 6px !important;
+    font-size: 10px !important;
+    border-radius: 3px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.css-inspector-copy-btn:hover {
+    background: #ff3b3b !important;
+    border-color: #ff3b3b !important;
+}
+
+.css-inspector-code {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid #444 !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    line-height: 1.4 !important;
+    color: #e0e0e0 !important;
+}
+
+.css-inspector-tag {
+    color: #ff6b6b !important;
+}
+
+.css-inspector-attr {
+    color: #4ecdc4 !important;
+}
+
+.css-inspector-value {
+    color: #95e454 !important;
+}
+
+.css-inspector-property {
+    color: #ffa726 !important;
+}
+
+.css-inspector-css-value {
+    color: #ab47bc !important;
+}
+
+.css-inspector-close {
+    position: absolute !important;
+    top: 5px !important;
+    right: 8px !important;
+    background: none !important;
+    border: none !important;
+    color: #999 !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+}
+
+.css-inspector-close:hover {
+    background: #ff3b3b !important;
+    color: #fff !important;
+}

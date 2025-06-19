@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Asset Fetcher - Assets Database</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: #0d0d0d;
+            background-image: 
+                radial-gradient(circle at 25% 25%, #1a0a0a 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #0a1a1a 0%, transparent 50%),
+                linear-gradient(145deg, #0d0d0d 0%, #1a1a1a 50%, #0d0d0d 100%);
+            min-height: 100vh;
+            color: #ff4444;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 68, 68, 0.03) 2px,
+                    rgba(255, 68, 68, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            padding: 30px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #333;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff4444, transparent);
+            box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ff4444, #cc2222, #ff6666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 68, 68, 0.3);
+            position: relative;
+        }
+
+        .download-all-btn {
+            background: linear-gradient(145deg, #ff4444, #cc2222);
+            color: #000;
+            border: 2px solid #ff6666;
+            padding: 15px 30px;
+            border-radius: 0;
+            font-size: 16px;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 5px 15px rgba(255, 68, 68, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .download-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .download-all-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-all-btn:hover {
+            background: linear-gradient(145deg, #ff6666, #ff4444);
+            border-color: #ff8888;
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(255, 68, 68, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 68, 68, 0.2);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 15px 0;
+            font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            padding: 8px 20px;
+            border: 1px solid #333;
+            color: #ccc;
+            position: relative;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff4444, transparent);
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .category {
+            margin-bottom: 50px;
+        }
+
+        .category-header {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 2px solid #333;
+            border-left: 4px solid #ff4444;
+            position: relative;
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .category-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.1));
+            pointer-events: none;
+        }
+
+        .category-title {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #ff6666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .category-count {
+            opacity: 0.7;
+            font-size: 14px;
+            /* font-family: 'JetBrains Mono', monospace; */
+            color: #999;
+        }
+
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .asset-item {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 2px solid #333;
+            padding: 20px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .asset-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            /* background: linear-gradient(45deg, #ff4444, #cc2222, #ff4444); */
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .asset-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 15px 35px rgba(255, 68, 68, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 30px rgba(255, 68, 68, 0.1);
+        }
+        
+        .asset-item:hover::before {
+            opacity: 1;
+        }
+
+        .asset-preview {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .asset-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            pointer-events: none;
+        }
+
+        .asset-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .asset-preview svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .asset-info {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #999;
+        }
+
+        .asset-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            word-break: break-all;
+            color: #ccc;
+            /* font-family: 'JetBrains Mono', monospace; */
+        }
+
+        .download-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            /* background: linear-gradient(145deg, #ff4444, #cc2222); */
+            color: #000;
+            border: 1px solid #ff6666;
+            padding: 8px 12px;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(255, 68, 68, 0.3);
+        }
+
+        .asset-item:hover .download-btn {
+            opacity: 1;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(145deg, #ff6666, #ff4444);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .placeholder-icon {
+            font-size: 48px;
+            opacity: 0.3;
+            color: #ff4444;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 80px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .empty-category {
+            text-align: center;
+            padding: 60px;
+            opacity: 0.4;
+            font-style: italic;
+            color: #666;
+            /* font-family: 'JetBrains Mono', monospace; */
+        }
+        
+        .terminal-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff4444, transparent);
+            animation: scanLine 4s linear infinite;
+            opacity: 0.3;
+            z-index: 1000;
+        }
+        
+        @keyframes scanLine {
+            0% { transform: translateY(-2px); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="header">
+        <h1>ASSET DATABASE<span class="terminal-cursor">_</span></h1>
+        <div class="stats">
+            <span class="stat">IMG: <span id="imageCount">0</span></span>
+            <span class="stat">VID: <span id="videoCount">0</span></span>
+            <span class="stat">SVG: <span id="svgCount">0</span></span>
+            <span class="stat">OTHER: <span id="otherCount">0</span></span>
+        </div>
+        <button id="downloadAllBtn" class="download-all-btn">⬇ Download All Assets</button>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div>SCANNING ASSETS<span class="terminal-cursor">_</span></div>
+        </div>
+
+        <div id="assetsContainer" style="display: none;">
+            <!-- Images Category -->
+            <div class="category">
+                <div class="category-header">
+                    <h2 class="category-title">🖼️ Image Files</h2>
+                    <p class="category-count" id="imagesSubCount">0 items detected</p>
+                </div>
+                <div id="imagesGrid" class="assets-grid"></div>
+            </div>
+
+            <!-- Videos Category -->
+            <div class="category">
+                <div class="category-header">
+                    <h2 class="category-title">🎥 Video Files</h2>
+                    <p class="category-count" id="videosSubCount">0 items detected</p>
+                </div>
+                <div id="videosGrid" class="assets-grid"></div>
+            </div>
+
+            <!-- SVG Category -->
+            <div class="category">
+                <div class="category-header">
+                    <h2 class="category-title">🎨 Vector Graphics</h2>
+                    <p class="category-count" id="svgSubCount">0 items detected</p>
+                </div>
+                <div id="svgGrid" class="assets-grid"></div>
+            </div>
+
+            <!-- Other Category -->
+            <div class="category">
+                <div class="category-header">
+                    <h2 class="category-title">📄 Other Files</h2>
+                    <p class="category-count" id="otherSubCount">0 items detected</p>
+                </div>
+                <div id="otherGrid" class="assets-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets.js"></script>
+</body>
+</html>
