@@ -1,111 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-   * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #000;
+  color: white;
+  overflow-x: hidden;
+  width: 100%;
+}
+.baground {
+  background-image: url(3dimg.png);
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+.logotext1 {
+  margin-right: 0;
+}
+.logotext2 {
+  color: red;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 8px 20px;
+  border: 2px solid white;
+  background: red;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btnn {
+  padding: 8px 20px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn img {
+  align-items: center;
+  margin-right: 10px;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+  min-height: 80vh;
+}
+
+.left {
+  max-width: 50%;
+}
+
+.left h1 {
+  font-size: 48px;
+}
+
+.left h3 {
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.left p {
+  margin-top: 20px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.btn {
+  background: linear-gradient(135deg, #ff3b3b 0%, #d32f2f 100%);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 59, 59, 0.4);
+}
+.btn:hover::before {
+  left: 100%;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(255, 59, 59, 0.3);
+}
+
+.btnn {
+  /* background: linear-gradient(135deg, #ff3b3b 0%, #d32f2f 100%); */
+  border: 2px solid white;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.btnn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 59, 59, 0.4);
+}
+.btnn:hover::before {
+  left: 100%;
+}
+.btnn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btnn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(255, 59, 59, 0.3);
+}
+
+.mid{
+  
+}
+
+.grid {
+      padding-top: 100px;
+      margin: 8%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 5%;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #000;
-      color: white;
-      overflow-x: hidden;
-      width: 100%;
-    }
-    .baground{
-        background-image: url(3dimg.png);
-        width: 100%;
+    .card {
+      background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(100, 3, 3),
+      transparent
+      );
+      transition: left 0.5s ease;
+      border-radius: 16px;
+      padding: 24px;
+      border: 2px solid red;
+      transition: transform 0.2s ease;
     }
 
-    header {
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      background-color: red;
+      border-radius: 50%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 30px 60px;
+      justify-content: center;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 18px;
-    }
-    .logotext1{
-    margin-right: 0;
-    }
-    .logotext2{
-        color: red;
+    .icon img {
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
     }
 
-    nav {
-      display: flex;
-      gap: 30px;
-      align-items: center;
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    nav a {
-      color: white;
+    p {
+      font-size: 15px;
+      color: #c9d1d9;
+      margin-bottom: 16px;
+    }
+
+    a {
+      color: red;
       text-decoration: none;
       font-weight: 500;
     }
 
-    .btn {
-      padding: 8px 20px;
-      border: 2px solid white;
-      background: red;
-      color: white;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    
-    .btnn {
-      padding: 8px 20px;
-      border: 2px solid white;
-      background: transparent;
-      color: white;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn img{
-       align-items: center;
-       margin-right: 10px;
-    }
-
-    .main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 80px 60px;
-      min-height: 80vh;
-    }
-
-    .left {
-      max-width: 50%;
-    }
-
-    .left h1 {
-      font-size: 48px;
-    }
-
-    .left h3 {
-      font-weight: 400;
-      margin-top: 10px;
-    }
-
-    .left p {
-      margin-top: 20px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      gap: 20px;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
+    a:hover {
+      text-decoration: underline;
     }
