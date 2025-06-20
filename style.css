@@ -1401,11 +1401,17 @@ nav a:hover {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.4s ease;
             cursor: pointer;
+            border-radius: 16px;
+            border: 2px solid #6c6c6c;
         }
-
+        
         .main-photo:hover {
             transform: scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+            border-radius: 16px;
+            box-shadow: #ff3333;
+            border: 2px solid #ff3333;
+            left: 100%;
         }
 
         .thumbnail-container {
@@ -1425,6 +1431,7 @@ nav a:hover {
             transition: all 0.3s ease;
             border: 3px solid transparent;
             opacity: 0.7;
+            border: 2px solid #6c6c6c;
         }
 
         .thumbnail:hover {
@@ -1460,6 +1467,7 @@ nav a:hover {
             transform: translate(-50%, -50%);
             width: 100%;
             padding: 0 20px;
+
         }
 
         .details-content.active {
