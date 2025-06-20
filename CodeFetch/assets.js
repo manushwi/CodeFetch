@@ -120,7 +120,7 @@ function createAssetItem(asset, type, index) {
     
     const downloadBtn = document.createElement('button');
     downloadBtn.className = 'download-btn';
-    downloadBtn.textContent = '📥';
+    downloadBtn.textContent = '⬇';
     downloadBtn.onclick = () => downloadAsset(asset, type, index);
     
     // Create preview based on type
