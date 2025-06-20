@@ -923,10 +923,10 @@ nav a:hover {
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(2, 3fr);
+            grid-template-columns: repeat(2, 5fr);
             gap: 2rem;
-            width: 100%;
-            max-width: 100px;
+            /* width: 100%; */
+            max-width: 1000px;
             padding: 0 1rem;
         }
 
