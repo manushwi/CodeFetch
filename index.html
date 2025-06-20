@@ -60,8 +60,11 @@
         </p>
         <div class="buttons">
           <button class="btnn"
-            onclick="document.getElementById('cards').scrollIntoView({ behavior: 'smooth' });">Features</button>
-          <button class="btn">Get Now</button>
+            onclick="document.getElementById('mainPhoto').scrollIntoView({ behavior: 'smooth' });">Features</button>
+          <button style="background: rgb(238, 31, 31); " class="btn">
+            <img style="padding-right: 10px; margin-right: 0; " src="get.png" alt="">
+            Get Now
+          </button>
         </div>
       </div>
     </section>
@@ -94,6 +97,10 @@
       </div>
     </div>
   </div>
+
+
+  
+
 
 <div class="spacer">
         <h2>Tools for web developers</h2>
@@ -163,6 +170,49 @@
             </div>
         </div>
     </div>
+
+
+<div class="lastPage">
+    <div class="carousel-container">
+        <div class="photo-section">
+            
+            <img id="mainPhoto" class="main-photo" src="ss1.png" alt="Main Photo">
+            
+            <div class="thumbnail-container">
+                <img class="thumbnail active" src="ss1.png" alt="Pizza" data-index="0">
+                <img class="thumbnail" src="ss3.png" alt="Pancakes" data-index="1">
+                <img class="thumbnail" src="ss2.png" alt="Salad" data-index="2">
+            </div>
+        </div>
+
+        <div class="details-section">
+            <div class="details-content active" id="content-0">
+                <div class="category">Extension</div>
+                <h1 class="title">CodeFetch Extension</h1>
+                <p class="description">Struggling with DevTools? Our Chrome Extension makes web inspection easy and beginner-friendly.</p>
+            </div>
+
+            <div class="details-content" id="content-1">
+                <div class="category">Assets</div>
+                <h1 class="title">Asset Database</h1>
+                <p class="description">Extract images, videos, and SVGs, and copy from any page. One click, you can extract images, videos,
+          and SVGs form any webpage.</p>
+            </div>
+
+            <div class="details-content" id="content-2">
+                <div class="category">HTML & CSS</div>
+                <h1 class="title">Get HTML & CSS</h1>
+                <p class="description">Inspect HTML and CSS by just hovering over the element. No need to open dev tools. With one click, you can hover over any element on a live site to see its HTML and CSS and copy ready-to-use code snippets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-about">
@@ -180,7 +230,7 @@
           <li><a style="cursor: pointer;"
               onclick="document.getElementById('main').scrollIntoView({ behavior: 'smooth' });">Home</a></li>
           <li><a style="cursor: pointer;"
-              onclick="document.getElementById('scrollContainer').scrollIntoView({ behavior: 'smooth' });">About</a>
+              onclick="document.getElementById('cards').scrollIntoView({ behavior: 'smooth' });">About</a>
           </li>
           <li><a style="cursor: pointer;">Contact</a></li>
         </ul>
@@ -200,6 +250,96 @@
       <p>made by manushwi,anurag</p>
     </div>
   </footer>
+
+
+
+
+
+
+  <script>
+        const photos = [
+            {
+                main: 'ss1.png',
+                thumb: 'ss1.png'
+            },
+            {
+                main: 'ss3.png',
+                thumb: 'ss3.png'
+            },
+            {
+                main: 'ss2.png',
+                thumb: 'ss2.png'
+            }
+        ];
+
+        const mainPhoto = document.getElementById('mainPhoto');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const detailsContents = document.querySelectorAll('.details-content');
+        let currentIndex = 0;
+
+        function switchPhoto(index) {
+            // Update main photo
+            mainPhoto.src = photos[index].main;
+            
+            // Update active thumbnail
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+            
+            // Update content with fade effect
+            detailsContents[currentIndex].classList.remove('active');
+            setTimeout(() => {
+                detailsContents[index].classList.add('active');
+            }, 200);
+            
+            currentIndex = index;
+        }
+
+        // Add click event to thumbnails
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                switchPhoto(index);
+            });
+        });
+
+        // Add click event to main photo (cycles through photos)
+        mainPhoto.addEventListener('click', () => {
+            const nextIndex = (currentIndex + 1) % photos.length;
+            switchPhoto(nextIndex);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                const nextIndex = (currentIndex + 1) % photos.length;
+                switchPhoto(nextIndex);
+            } else if (e.key === 'ArrowLeft') {
+                const prevIndex = (currentIndex - 1 + photos.length) % photos.length;
+                switchPhoto(prevIndex);
+            }
+        });
+
+        // Auto-advance carousel (optional)
+        let autoAdvance = setInterval(() => {
+            const nextIndex = (currentIndex + 1) % photos.length;
+            switchPhoto(nextIndex);
+        }, 5000);
+
+        // Pause auto-advance on hover
+        const container = document.querySelector('.carousel-container');
+        container.addEventListener('mouseenter', () => {
+            clearInterval(autoAdvance);
+        });
+
+        container.addEventListener('mouseleave', () => {
+            autoAdvance = setInterval(() => {
+                const nextIndex = (currentIndex + 1) % photos.length;
+                switchPhoto(nextIndex);
+            }, 5000);
+        });
+    </script>
+
+
 
 
 
