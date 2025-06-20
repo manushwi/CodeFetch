@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Asset Fetcher - Assets Database</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap'); */
         
         * {
             margin: 0;
@@ -12,8 +12,13 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Orbitron', monospace;
+            /* font-family: 'Orbitron', monospace; */
+            font-family: "Inter", sans-serif;
             background: #0d0d0d;
             background-image: 
                 radial-gradient(circle at 25% 25%, #1a0a0a 0%, transparent 50%),
@@ -53,7 +58,6 @@
             z-index: 100;
             border-bottom: 2px solid #333;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            position: relative;
         }
         
         .header::after {
@@ -86,10 +90,11 @@
             color: #000;
             border: 2px solid #ff6666;
             padding: 15px 30px;
-            border-radius: 0;
+            border-radius: 15px;
             font-size: 16px;
             font-weight: 900;
-            font-family: 'Orbitron', monospace;
+            /* font-family: 'Orbitron', monospace; */
+            font-family: "Inter", sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
             margin: 15px;
@@ -133,7 +138,8 @@
             gap: 25px;
             margin: 15px 0;
             font-size: 14px;
-            font-family: 'JetBrains Mono', monospace;
+            /* font-family: 'JetBrains Mono', monospace; */
+            font-family: "Inter", sans-serif;
         }
 
         .stat {
@@ -143,6 +149,8 @@
             color: #ccc;
             position: relative;
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .stat::before {
@@ -154,6 +162,20 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, #ff4444, transparent);
             opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover::before {
+            opacity: 1;
+        }
+        
+        .stat:hover {
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+            border-color: #ff4444;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 5px 15px rgba(255, 68, 68, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .container {
@@ -166,6 +188,7 @@
 
         .category {
             margin-bottom: 50px;
+            scroll-margin-top: 120px; /* Account for sticky header */
         }
 
         .category-header {
@@ -204,6 +227,7 @@
             opacity: 0.7;
             font-size: 14px;
             /* font-family: 'JetBrains Mono', monospace; */
+            font-family: "Inter", sans-serif;
             color: #999;
         }
 
@@ -211,6 +235,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
+            scroll-margin-top: 120px; /* Account for sticky header */
         }
 
         .asset-item {
@@ -233,6 +258,7 @@
             right: -2px;
             bottom: -2px;
             /* background: linear-gradient(45deg, #ff4444, #cc2222, #ff4444); */
+            font-family: "Inter", sans-serif;
             z-index: -1;
             opacity: 0;
             transition: opacity 0.3s;
@@ -289,7 +315,8 @@
             font-size: 12px;
             opacity: 0.7;
             margin-bottom: 12px;
-            font-family: 'JetBrains Mono', monospace;
+            /* font-family: 'JetBrains Mono', monospace; */
+            font-family: "Inter", sans-serif;
             color: #999;
         }
 
@@ -300,22 +327,25 @@
             word-break: break-all;
             color: #ccc;
             /* font-family: 'JetBrains Mono', monospace; */
+            font-family: "Inter", sans-serif;
         }
 
         .download-btn {
             position: absolute;
             top: 15px;
             right: 15px;
-            /* background: linear-gradient(145deg, #ff4444, #cc2222); */
+            background: linear-gradient(145deg, #ff4444, #cc2222);
             color: #000;
             border: 1px solid #ff6666;
+            border-radius: 5px;
             padding: 8px 12px;
             cursor: pointer;
             opacity: 0;
             transition: all 0.3s ease;
             font-size: 12px;
             font-weight: 700;
-            font-family: 'Orbitron', monospace;
+            /* font-family: 'Orbitron', monospace; */
+            font-family: "Inter", sans-serif;
             text-transform: uppercase;
             box-shadow: 0 3px 10px rgba(255, 68, 68, 0.3);
         }
@@ -353,6 +383,7 @@
             font-style: italic;
             color: #666;
             /* font-family: 'JetBrains Mono', monospace; */
+            font-family: "Inter", sans-serif;
         }
         
         .terminal-cursor {
@@ -383,14 +414,14 @@
     </style>
 </head>
 <body>
-    <div class="scan-line"></div>
+    <!-- <div class="scan-line"></div> -->
     <div class="header">
         <h1>ASSET DATABASE<span class="terminal-cursor">_</span></h1>
         <div class="stats">
-            <span class="stat">IMG: <span id="imageCount">0</span></span>
-            <span class="stat">VID: <span id="videoCount">0</span></span>
-            <span class="stat">SVG: <span id="svgCount">0</span></span>
-            <span class="stat">OTHER: <span id="otherCount">0</span></span>
+            <button class="stat" onclick="scrollToSection('imagesGrid')">IMG: <span id="imageCount">0</span></button>
+            <button class="stat" onclick="scrollToSection('videosGrid')">VID: <span id="videoCount">0</span></button>
+            <button class="stat" onclick="scrollToSection('svgGrid')">SVG: <span id="svgCount">0</span></button>
+            <button class="stat" onclick="scrollToSection('otherGrid')">OTHER: <span id="otherCount">0</span></button>
         </div>
         <button id="downloadAllBtn" class="download-all-btn">⬇ Download All Assets</button>
     </div>
@@ -407,7 +438,17 @@
                     <h2 class="category-title">🖼️ Image Files</h2>
                     <p class="category-count" id="imagesSubCount">0 items detected</p>
                 </div>
-                <div id="imagesGrid" class="assets-grid"></div>
+                <div id="imagesGrid" class="assets-grid">
+                    <!-- Demo content for testing -->
+                    <div class="asset-item">
+                        <div class="asset-preview">
+                            <div class="placeholder-icon">🖼️</div>
+                        </div>
+                        <div class="asset-info">PNG • 1.2MB</div>
+                        <div class="asset-title">sample-image.png</div>
+                        <button class="download-btn">⬇</button>
+                    </div>
+                </div>
             </div>
 
             <!-- Videos Category -->
@@ -416,7 +457,17 @@
                     <h2 class="category-title">🎥 Video Files</h2>
                     <p class="category-count" id="videosSubCount">0 items detected</p>
                 </div>
-                <div id="videosGrid" class="assets-grid"></div>
+                <div id="videosGrid" class="assets-grid">
+                    <!-- Demo content for testing -->
+                    <div class="asset-item">
+                        <div class="asset-preview">
+                            <div class="placeholder-icon">🎥</div>
+                        </div>
+                        <div class="asset-info">MP4 • 15.3MB</div>
+                        <div class="asset-title">sample-video.mp4</div>
+                        <button class="download-btn">⬇</button>
+                    </div>
+                </div>
             </div>
 
             <!-- SVG Category -->
@@ -425,7 +476,17 @@
                     <h2 class="category-title">🎨 Vector Graphics</h2>
                     <p class="category-count" id="svgSubCount">0 items detected</p>
                 </div>
-                <div id="svgGrid" class="assets-grid"></div>
+                <div id="svgGrid" class="assets-grid">
+                    <!-- Demo content for testing -->
+                    <div class="asset-item">
+                        <div class="asset-preview">
+                            <div class="placeholder-icon">🎨</div>
+                        </div>
+                        <div class="asset-info">SVG • 45KB</div>
+                        <div class="asset-title">sample-vector.svg</div>
+                        <button class="download-btn">⬇</button>
+                    </div>
+                </div>
             </div>
 
             <!-- Other Category -->
@@ -434,11 +495,75 @@
                     <h2 class="category-title">📄 Other Files</h2>
                     <p class="category-count" id="otherSubCount">0 items detected</p>
                 </div>
-                <div id="otherGrid" class="assets-grid"></div>
+                <div id="otherGrid" class="assets-grid">
+                    <!-- Demo content for testing -->
+                    <div class="asset-item">
+                        <div class="asset-preview">
+                            <div class="placeholder-icon">📄</div>
+                        </div>
+                        <div class="asset-info">TXT • 2KB</div>
+                        <div class="asset-title">sample-file.txt</div>
+                        <button class="download-btn">⬇</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script>
+        // Enhanced scroll function with better error handling
+        function scrollToSection(sectionId) {
+            try {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    // Show the assets container first if it's hidden
+                    const assetsContainer = document.getElementById('assetsContainer');
+                    const loading = document.getElementById('loading');
+                    
+                    if (assetsContainer && assetsContainer.style.display === 'none') {
+                        assetsContainer.style.display = 'block';
+                        if (loading) {
+                            loading.style.display = 'none';
+                        }
+                    }
+                    
+                    // Scroll to the element with offset for sticky header
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const elementPosition = element.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    console.warn(`Element with ID '${sectionId}' not found`);
+                }
+            } catch (error) {
+                console.error('Error scrolling to section:', error);
+            }
+        }
+
+        // Initialize demo - remove this when you have your actual assets.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show assets container for demo
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('assetsContainer').style.display = 'block';
+                
+                // Update counts for demo
+                document.getElementById('imageCount').textContent = '1';
+                document.getElementById('videoCount').textContent = '1';
+                document.getElementById('svgCount').textContent = '1';
+                document.getElementById('otherCount').textContent = '1';
+                
+                document.getElementById('imagesSubCount').textContent = '1 items detected';
+                document.getElementById('videosSubCount').textContent = '1 items detected';
+                document.getElementById('svgSubCount').textContent = '1 items detected';
+                document.getElementById('otherSubCount').textContent = '1 items detected';
+            }, 1000);
+        });
+        
+    </script>
     <script src="assets.js"></script>
 </body>
 </html>

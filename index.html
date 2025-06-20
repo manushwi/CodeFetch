@@ -26,9 +26,12 @@
       </div>
 
       <nav id="nav">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Contact Us</a>
+        <a style="cursor: pointer;"
+          onclick="document.getElementById('main').scrollIntoView({ behavior: 'smooth' });">Home</a>
+        <a style="cursor: pointer;"
+          onclick="document.getElementById('cards').scrollIntoView({ behavior: 'smooth' });">Products</a>
+        <a style="cursor: pointer;"
+          onclick="document.getElementById('contactUs').scrollIntoView({ behavior: 'smooth' });">Contact Us</a>
         <button class="btn">
           <img style="padding-right: 10px;" src="get.png" alt="">
           Get Now
@@ -56,12 +59,15 @@
           Start learning by doing, not guessing.
         </p>
         <div class="buttons">
-          <button class="btnn">Trial</button>
-          <button class="btn">Premium</button>
+          <button class="btnn"
+            onclick="document.getElementById('cards').scrollIntoView({ behavior: 'smooth' });">Features</button>
+          <button class="btn">Get Now</button>
         </div>
       </div>
     </section>
+
   </div>
+
 
   <div class="scroll-container" id="scrollContainer">
     <div class="animation-wrapper">
@@ -91,11 +97,11 @@
 
   <div class="spacer">
     <h2>Tools for web developers</h2>
-    <div class="cards">
+    <div class="cards" id="cards">
       <div class="feature-grid">
         <div class="feature-item">
           <div class="icon">
-            <img src="eye.png" alt="Inspector Icon" />
+            <img src="eye.png" style="scale: 1.3;" alt="Inspector Icon" />
           </div>
           <h3>Inspector</h3>
           <p>Inspect HTML and CSS by just hovering over the element. No need to open dev tools.</p>
@@ -112,99 +118,135 @@
         </div>
         <div class="feature-item">
           <div class="icon">
-            <img src="macrphone..svg" alt="Assets Icon" />
+            <img src="free-1-svgrepo-com (1).svg" style="scale: 1.7;" alt="Assets Icon" />
           </div>
-          <h3>Assets</h3>
-          <p>Extract images, videos, and SVGs,
-            and copy ready-to-use code snippets from any page.</p>
+          <h3> Completely Free to Use</h3>
+          <p>Enjoy all our features without paying a rupee.
+            We believe great tools should be accessible to everyone.
+          </p>
           <a href="#">Learn more →</a>
         </div>
         <div class="feature-item">
           <div class="icon">
-            <img src="free-1-svgrepo-com (1).svg" alt="Assets Icon" style="scale: 1.4;" />
+            <img src="browsers-svgrepo-com.svg" alt="Assets Icon" style="scale: 1.2;" />
           </div>
-          <h3>Assets</h3>
-          <p>Extract images, videos, and SVGs,
-            and copy ready-to-use code snippets from any page.</p>
+          <h3>Platform Independent</h3>
+          <p>Our platform is fully compatible with all major browsers.
+            Enjoy a seamless experience on
+            <div class="flex items-center font-body text-sm text-gray-300">
+              <span class="ml-2 flex-1 flex items-center gap-0.5"> 
+                <img class="w-8 h-8" 
+                  src="chrome.svg"
+                  style="height: 32px; width: 32px;"
+                  alt="Chrome"> 
+                <img class="w-8 h-8" 
+                  src="brave.svg" 
+                  style="height: 32px; width: 32px;"
+                  alt="Brave">
+                <img class="w-8 h-8"
+                  src="edge.svg" 
+                  style="height: 32px; width: 32px;"
+                  alt="Edge"> 
+                <img class="w-7 h-7" 
+                  src="firefox.svg" 
+                  style="height: 32px; width: 32px;"
+                  alt="Firefox"> 
+              </span>
+            </div>
+          </p>
           <a href="#">Learn more →</a>
         </div>
+        <div class="feature-item">
+          <div class="icon">
+            <img src="macrphone..svg" alt="Assets Icon" />
+          </div>
+          <h3>Coming Soon . . .</h3>
+          <p>We’re working behind the scenes to bring you exciting new tools.
+            Stay tuned for powerful updates that will take your experience to the next level!
+          </p>
+          <a href="#">Learn more →</a>
+        </div>
+
       </div>
-      
+
     </div>
   </div>
   <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-about">
-      <h3>Code Fetch</h3>
-      <p>
-        Our Chrome Extension makes web inspection easy and beginner-friendly.
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Code Fetch</h3>
+        <p>
+          Our Chrome Extension makes web inspection easy and beginner-friendly.
           With one click, you can hover over any element on a live site to see its HTML and CSS, extract images, videos,
           and SVGs
-      </p>
-    </div>
+        </p>
+      </div>
 
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#Home">Home</a></li>
-        <li><a href="#About">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a style="cursor: pointer;"
+              onclick="document.getElementById('main').scrollIntoView({ behavior: 'smooth' });">Home</a></li>
+          <li><a style="cursor: pointer;"
+              onclick="document.getElementById('scrollContainer').scrollIntoView({ behavior: 'smooth' });">About</a>
+          </li>
+          <li><a style="cursor: pointer;">Contact</a></li>
+        </ul>
+      </div>
 
-    <div class="footer-contact">
-      <h4>Contact Us</h4>
-      <div class="tooltip-container" id="tooltipContainer">
-            <!-- Tooltips will be dynamically generated -->
+      <div class="footer-contact" id="contactUs">
+        <h4>Contact Us</h4>
+        <div class="tooltip-container" id="tooltipContainer">
+          <!-- Tooltips will be dynamically generated -->
         </div>
+      </div>
     </div>
-  </div>
-
-  
-  <div class="footer-bottom">
-    <p>&copy; 2025 Code Fetch. All rights reserved.</p>
-    <p>made by manushwi,anurag</p>
-  </div>
-</footer>
 
 
+    <div class="footer-bottom">
+      <p>&copy; 2025 Code Fetch. All rights reserved.</p>
+      <p>made by manushwi,anurag</p>
+    </div>
+  </footer>
 
-<script>
-        // Sample data for tooltips
-        const tooltipData = [
-            {
-                name: "Manushwi Raj",
-                role: "Team Leader",
-                avatar: "/manushwi.jpg",
-                id: "marcus",
-                link: "https://www.linkedin.com/in/manushwi-raj-bhardwaj/"
-            },
-            {
-                name: "Anurag Singh",
-                role: "Web designer",
-                avatar: "/anurag.jpg",
-                id: "elena",
-                link: "https://www.linkedin.com/in/anurag-singh-003958353/"
-            },
-            {
-                name: "Ram Dayal",
-                role: "Support",
-                avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-                id: "david",
-                link: "https://www.linkedin.com/in/ram72/"
-            },
-            {
-                name: "Priya Yadav",
-                role: "Speaker",
-                avatar: "/priya.jpg",
-                id: "priya",
-                link: "https://www.linkedin.com/in/priya-yadav-9758542b3/"
-            }
-        ];
 
-        // Generate tooltip HTML
-        function createTooltipHTML(person) {
-            return `
+
+  <script>
+    // Sample data for tooltips
+    const tooltipData = [
+      {
+        name: "Manushwi Raj",
+        role: "Team Leader",
+        avatar: "/manushwi.jpg",
+        id: "marcus",
+        link: "https://www.linkedin.com/in/manushwi-raj-bhardwaj/"
+      },
+      {
+        name: "Anurag Singh",
+        role: "Web designer",
+        avatar: "/anurag.jpg",
+        id: "elena",
+        link: "https://www.linkedin.com/in/anurag-singh-003958353/"
+      },
+      {
+        name: "Ram Dayal",
+        role: "Support",
+        avatar: "/ram.jpg",
+        id: "david",
+        link: "https://www.linkedin.com/in/ram72/"
+      },
+      {
+        name: "Priya Yadav",
+        role: "Speaker",
+        avatar: "/priya.jpg",
+        id: "priya",
+        link: "https://www.linkedin.com/in/priya-yadav-9758542b3/"
+      }
+    ];
+
+    // Generate tooltip HTML
+    function createTooltipHTML(person) {
+      return `
                 <div class="tooltip-item" data-id="${person.id}">
                     <a href="${person.link}" target="_blank">
                       <img src="${person.avatar}" class="avatar" alt="${person.name}" loading="lazy">
@@ -216,91 +258,91 @@
                     </div>
                 </div>
             `;
-        }
+    }
 
-        // Initialize tooltips
-        function initializeTooltips() {
-            const container = document.getElementById('tooltipContainer');
-            const tooltipHTML = tooltipData.map(person => createTooltipHTML(person)).join('');
-            container.innerHTML = tooltipHTML;
+    // Initialize tooltips
+    function initializeTooltips() {
+      const container = document.getElementById('tooltipContainer');
+      const tooltipHTML = tooltipData.map(person => createTooltipHTML(person)).join('');
+      container.innerHTML = tooltipHTML;
 
-            // Add enhanced hover effects
-            const tooltipItems = container.querySelectorAll('.tooltip-item');
-            
-            tooltipItems.forEach((item, index) => {
-                // Staggered entrance animation
-                item.style.animationDelay = `${index * 0.1}s`;
-                item.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                
-                // Enhanced interaction effects
-                item.addEventListener('mouseenter', function() {
-                    // Subtle scale effect on other items
-                    tooltipItems.forEach((otherItem, otherIndex) => {
-                        if (otherIndex !== index) {
-                            otherItem.style.transform = 'scale(0.95)';
-                            otherItem.style.opacity = '0.7';
-                        }
-                    });
-                });
+      // Add enhanced hover effects
+      const tooltipItems = container.querySelectorAll('.tooltip-item');
 
-                item.addEventListener('mouseleave', function() {
-                    // Reset all items
-                    tooltipItems.forEach(otherItem => {
-                        otherItem.style.transform = '';
-                        otherItem.style.opacity = '';
-                    });
-                });
+      tooltipItems.forEach((item, index) => {
+        // Staggered entrance animation
+        item.style.animationDelay = `${index * 0.1}s`;
+        item.style.animation = 'fadeInUp 0.6s ease-out forwards';
 
-                // Handle image loading errors
-                const img = item.querySelector('.avatar');
-                img.addEventListener('error', function() {
-                    this.style.background = `linear-gradient(135deg, 
-                        hsl(${Math.random() * 360}, 70%, 60%) 0%, 
-                        hsl(${Math.random() * 360}, 70%, 50%) 100%)`;
-                    this.innerHTML = person.name.charAt(0);
-                    this.style.display = 'flex';
-                    this.style.alignItems = 'center';
-                    this.style.justifyContent = 'center';
-                    this.style.fontSize = '1.2rem';
-                    this.style.fontWeight = '600';
-                    this.style.color = 'white';
-                });
-            });
-        }
-
-        // Advanced tooltip positioning for edge cases
-        function adjustTooltipPosition() {
-            const tooltips = document.querySelectorAll('.tooltip');
-            
-            tooltips.forEach(tooltip => {
-                const rect = tooltip.getBoundingClientRect();
-                const viewportWidth = window.innerWidth;
-                
-                // Adjust if tooltip goes off-screen
-                if (rect.left < 10) {
-                    tooltip.style.left = '10px';
-                    tooltip.style.transform = 'translateX(0)';
-                } else if (rect.right > viewportWidth - 10) {
-                    tooltip.style.left = 'auto';
-                    tooltip.style.right = '10px';
-                    tooltip.style.transform = 'translateX(0)';
-                }
-            });
-        }
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeTooltips();
-            
-            // Adjust tooltip positions on window resize
-            let resizeTimeout;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(adjustTooltipPosition, 100);
-            });
+        // Enhanced interaction effects
+        item.addEventListener('mouseenter', function () {
+          // Subtle scale effect on other items
+          tooltipItems.forEach((otherItem, otherIndex) => {
+            if (otherIndex !== index) {
+              otherItem.style.transform = 'scale(0.95)';
+              otherItem.style.opacity = '0.7';
+            }
+          });
         });
 
-    </script>
+        item.addEventListener('mouseleave', function () {
+          // Reset all items
+          tooltipItems.forEach(otherItem => {
+            otherItem.style.transform = '';
+            otherItem.style.opacity = '';
+          });
+        });
+
+        // Handle image loading errors
+        const img = item.querySelector('.avatar');
+        img.addEventListener('error', function () {
+          this.style.background = `linear-gradient(135deg, 
+                        hsl(${Math.random() * 360}, 70%, 60%) 0%, 
+                        hsl(${Math.random() * 360}, 70%, 50%) 100%)`;
+          this.innerHTML = person.name.charAt(0);
+          this.style.display = 'flex';
+          this.style.alignItems = 'center';
+          this.style.justifyContent = 'center';
+          this.style.fontSize = '1.2rem';
+          this.style.fontWeight = '600';
+          this.style.color = 'white';
+        });
+      });
+    }
+
+    // Advanced tooltip positioning for edge cases
+    function adjustTooltipPosition() {
+      const tooltips = document.querySelectorAll('.tooltip');
+
+      tooltips.forEach(tooltip => {
+        const rect = tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        // Adjust if tooltip goes off-screen
+        if (rect.left < 10) {
+          tooltip.style.left = '10px';
+          tooltip.style.transform = 'translateX(0)';
+        } else if (rect.right > viewportWidth - 10) {
+          tooltip.style.left = 'auto';
+          tooltip.style.right = '10px';
+          tooltip.style.transform = 'translateX(0)';
+        }
+      });
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeTooltips();
+
+      // Adjust tooltip positions on window resize
+      let resizeTimeout;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(adjustTooltipPosition, 100);
+      });
+    });
+
+  </script>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
@@ -350,7 +392,7 @@
 
         // Calculate when container enters and exits viewport
         const startOffset = windowHeight;
-        const endOffset = windowHeight * 0.001;
+        const endOffset = windowHeight * 0.000001;
 
         const totalDistance = startOffset - endOffset;
         const currentProgress = (startOffset - containerTop) / totalDistance;
@@ -360,7 +402,7 @@
 
       updateAnimations(progress) {
         // Rotation: starts at 20deg, ends at 0deg
-        const rotation = 30 - (progress * 30);
+        const rotation = 80 - (progress * 80);
 
         // Scale: mobile (0.7 to 0.9), desktop (1.05 to 1.0)
         const scaleStart = this.isMobile ? 0.7 : 1.05;
